@@ -16,7 +16,13 @@ After installation, the user can begin creating their HTML by starting the appli
 
 After completion, the user will be able to access the dynmically generated team builder by opening the `team.html` file that will be located in the Develop folder of the application. 
 
+### Walkthrough video of usage
+
 ## Testing 
+
+
+### Walkthrough video of jest tests
+
 
 ## Questions
 * Any questions can be directed to me through my [Github](https://github.com/jmaraya1229) or email (jessemaraya2013@gmail.com)

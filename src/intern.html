@@ -1,16 +1,16 @@
 `<div class="col-md-4">
     <div class="card" style="margin-top:10px">
         <div class="card-body" style="background-color:lightskyblue">
-        <h5 class="card-title">${name}</h5>
+        <h5 class="card-title">${data1.name}</h5>
         <p class="card-text">
             <i class="fa-solid fa-user-graduate"></i>
                 Intern
             </p>
         </div>
         <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${id}</li>
-        <li class="list-group-item">Email: <a href = "mailto: ${email}">${email}</a></li>
-        <li class="list-group-item">School: ${internSchool}</li>
+        <li class="list-group-item">ID: ${data1.id}</li>
+        <li class="list-group-item">Email: <a href = "mailto: ${data1.email}">${data1.email}</a></li>
+        <li class="list-group-item">School: ${data2.school}</li>
         </ul>
     </div>
 </div>

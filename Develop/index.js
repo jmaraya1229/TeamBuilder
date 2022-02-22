@@ -20,7 +20,7 @@ const mainQuestions = [
     },
     {
         type: "list", 
-        name: "member",
+        name: "role",
         message: "What is the team member's role?",
         choices: ["Manager", "Engineer", "Intern"],
     },
@@ -28,27 +28,26 @@ const mainQuestions = [
 
 const team = [];
 const generateTeam = () => {
-    inquirer
-    .prompt(mainQuestions)
+    inquirer.prompt(mainQuestions)
     .then((data1) => {
         inquirer
         .prompt([
         {
             when: () => data1.member === "Manager",
             type: "input", 
-            name: "managerOffice",
+            name: "officeNumber",
             message: "What is the manager's office number?",
         },
         {
             when: () => data1.member === "Engineer",
             type: "input", 
-            name: "engineerGithub",
+            name: "github",
             message: "What is the enginner's Github username?",
         },        
         {
             when: () => data1.member === "Intern",
             type: "input", 
-            name: "internSchool",
+            name: "school",
             message: "What school does the intern attend?",
         },
         {
