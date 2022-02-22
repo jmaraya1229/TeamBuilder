@@ -1,6 +1,11 @@
+const Manager = require('./lib/manager.js');
+const Engineer = require('./lib/engineer.js');
+const Intern = require('./lib/intern.js');
+
 const inquirer = require('inquirer');
 const fs = require('fs');
-const render = require('./utils/generateTeamMembers.js');
+
+const render = require('./renderTeam.js');
 
 const mainQuestions = [
     {
@@ -78,7 +83,7 @@ const generateTeam = () => {
             team.forEach((team) => {
             console.log(team);
             });
-            fs.writeFile("team.html", render(team), (err) => {
+            fs.writeFile("dist/team.html", render(team), (err) => {
             if (err) {
                 throw err;
             }
