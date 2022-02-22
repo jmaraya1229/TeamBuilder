@@ -3,7 +3,11 @@ const Engineer = require('./lib/engineer.js');
 const Intern = require('./lib/intern.js');
 
 const inquirer = require('inquirer');
+const path = require("path");
 const fs = require('fs');
+
+const distDir = path.resolve(__dirname, "dist");
+const distPath = path.join(distDir, "team.html");
 
 const render = require('./renderTeam.js');
 
@@ -38,19 +42,19 @@ const generateTeam = () => {
         inquirer
         .prompt([
         {
-            when: () => data1.member === "Manager",
+            when: () => data1.role === "Manager",
             type: "input", 
             name: "officeNumber",
             message: "What is the manager's office number?",
         },
         {
-            when: () => data1.member === "Engineer",
+            when: () => data1.role === "Engineer",
             type: "input", 
             name: "github",
-            message: "What is the enginner's Github username?",
+            message: "What is the engineer's Github username?",
         },        
         {
-            when: () => data1.member === "Intern",
+            when: () => data1.role === "Intern",
             type: "input", 
             name: "school",
             message: "What school does the intern attend?",
@@ -64,17 +68,17 @@ const generateTeam = () => {
 
     .then((data2) => {
         if (data1.role === "Manager") {
-            const manager = new Manager(data1.name, data1.id, data1.email, data1.member, data2.managerOffice);
+            const manager = new Manager(data1.name, data1.id, data1.email, data2.officeNumber);
             team.push(manager);
         }
 
         if (data1.role === "Engineer") {
-            const engineer = new Engineer(data1.name, data1.id, data1.email, data1.member, data2.engineerGithub);
+            const engineer = new Engineer(data1.name, data1.id, data1.email, data2.github);
             team.push(engineer);
         }
 
         if (data1.role === "Intern") {
-            const intern = new Intern(data1.name, data1.id, data1.email, data1.role, data2.InternSchool);
+            const intern = new Intern(data1.name, data1.id, data1.email, data2.school);
             team.push(intern);
         }
         if (data2.addMore) {
@@ -83,7 +87,8 @@ const generateTeam = () => {
             team.forEach((team) => {
             console.log(team);
             });
-            fs.writeFile("dist/team.html", render(team), (err) => {
+            console.log(render(team))
+            fs.writeFile(distPath, render(team), (err) => {
             if (err) {
                 throw err;
             }
