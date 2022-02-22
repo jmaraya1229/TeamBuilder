@@ -85,9 +85,7 @@ const generateTeam = () => {
             generateTeam();
         } else {
             team.forEach((team) => {
-            console.log(team);
             });
-            console.log(render(team))
             fs.writeFile(distPath, render(team), (err) => {
             if (err) {
                 throw err;
